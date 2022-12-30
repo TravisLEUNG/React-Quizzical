@@ -20,8 +20,8 @@ export default function Selection({
 		</option>
 	));
 	return (
-		<div className='flex gap-4'>
-			<label className='text-md flex w-auto text-center align-middle font-bold leading-8 text-gray-800'>
+		<div className='flex gap-2'>
+			<label className='text-md flex w-auto text-center align-middle font-bold leading-8 text-gray-700'>
 				{label}
 			</label>
 			<select
