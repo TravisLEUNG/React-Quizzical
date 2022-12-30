@@ -1,4 +1,4 @@
-import ApiClient, { ApiClientInterface } from "../configs/apiClient";
+import { ApiClientInterface } from "../configs/apiClient";
 
 export type Question = {
 	category: string;
@@ -14,7 +14,7 @@ interface GetQuestionsResponse {
 	results: Array<Question>;
 }
 
-interface GetAPIParams {
+export interface GetAPIParams {
 	amount?: number;
 	category?: string;
 	difficulty?: "easy" | "medium" | "hard";
@@ -70,7 +70,13 @@ export default class QuestionService {
 		this.questionApiClient = questionApiClient;
 	}
 
-	async getQuestions(): Promise<Array<Question> | undefined> {
-		return this.questionApiClient.getQuestions({});
+	async getQuestions(
+		params: GetAPIParams
+	): Promise<Array<Question> | undefined> {
+		const modifiedParams: { [key: string]: any } = {};
+		for (const [key, value] of Object.entries(params)) {
+			if (!!value && value !== "") modifiedParams[key] = value;
+		}
+		return this.questionApiClient.getQuestions(params);
 	}
 }

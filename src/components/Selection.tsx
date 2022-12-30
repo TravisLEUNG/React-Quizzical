@@ -1,7 +1,7 @@
 // Required props
 interface RequiredProps {
 	label: string;
-	options: Array<{ value: string; label: string }>;
+	options: Array<{ value?: string; label: string }>;
 	onSelected: (newValue: string) => void;
 }
 
@@ -10,12 +10,8 @@ export default function Selection({
 	options,
 	onSelected,
 }: RequiredProps) {
-	const handleSelection = (event: React.FormEvent<HTMLInputElement>) => {
-		onSelected(event.currentTarget.value! ?? options[0].value);
-	};
-
-	const optionList = options.map((option) => (
-		<option key={option.value} value={option.value}>
+	const optionList = options.map((option, index) => (
+		<option key={index} value={option.value}>
 			{option.label}
 		</option>
 	));
@@ -25,7 +21,9 @@ export default function Selection({
 				{label}
 			</label>
 			<select
-				onChange={() => handleSelection}
+				onChange={(event) =>
+					onSelected(event.currentTarget.value! ?? options[0].value)
+				}
 				className='text-l text-l w-full appearance-none rounded-lg border-blue-500 bg-gray-200 px-2 text-center text-sm text-gray-600 outline-none  outline-offset-0 hover:outline-2 hover:outline-blue-500'
 			>
 				{optionList}

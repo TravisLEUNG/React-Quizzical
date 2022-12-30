@@ -1,4 +1,5 @@
 import Selection from "../components/Selection";
+import { getQuestionAPIParamsData } from "../apis/data/QuestionData";
 
 // Required props
 interface RequiredProps {
@@ -21,64 +22,20 @@ export default function StartingPage({
 			</p>
 			<div className='mt-4 mb-8'>
 				<Selection
-					label='Category'
-					options={[
-						{ label: "Any Category", value: "any" },
-						{ label: "General Knowledge", value: "9" },
-						{ label: "Entertainment: Books", value: "10" },
-						{ label: "Entertainment: Film", value: "11" },
-						{ label: "Entertainment: Music", value: "12" },
-						{
-							label: "Entertainment: Musicals & Theatres",
-							value: "13",
-						},
-						{ label: "Entertainment: Television", value: "14" },
-						{ label: "Entertainment: Video Games", value: "15" },
-						{ label: "Entertainment: Board Games", value: "16" },
-						{ label: "Science & Nature", value: "17" },
-						{ label: "Science: Computers", value: "18" },
-						{ label: "Science: Mathematics", value: "19" },
-						{ label: "Mythology", value: "20" },
-						{ label: "Sports", value: "21" },
-						{ label: "Geography", value: "22" },
-						{ label: "History", value: "23" },
-						{ label: "Politics", value: "24" },
-						{ label: "Art", value: "25" },
-						{ label: "Celebrities", value: "26" },
-						{ label: "Animals", value: "27" },
-						{ label: "Vehicles", value: "28" },
-						{ label: "Entertainment: Comics", value: "29" },
-						{ label: "Science: Gadgets", value: "30" },
-						{
-							label: "Entertainment: Japanese Anime & Manga",
-							value: "31",
-						},
-						{
-							label: "Entertainment: Cartoon & Animations",
-							value: "32",
-						},
-					]}
+					label={getQuestionAPIParamsData.category.label}
+					options={getQuestionAPIParamsData.category.options}
 					onSelected={(value) => handleSetting("category", value)}
 				/>
 			</div>
 			<div className='mt-4 mb-8 flex justify-between gap-4'>
 				<Selection
-					label='Difficulty'
-					options={[
-						{ label: "Any Difficulty", value: "any" },
-						{ label: "Easy", value: "easy" },
-						{ label: "Medium", value: "medium" },
-						{ label: "Hard", value: "hard" },
-					]}
+					label={getQuestionAPIParamsData.difficulty.label}
+					options={getQuestionAPIParamsData.difficulty.options}
 					onSelected={(value) => handleSetting("difficulty", value)}
 				/>
 				<Selection
-					label='Type'
-					options={[
-						{ label: "Any Type", value: "any" },
-						{ label: "Multiple Choice", value: "multiple" },
-						{ label: "True / False", value: "boolean" },
-					]}
+					label={getQuestionAPIParamsData.type.label}
+					options={getQuestionAPIParamsData.type.options}
 					onSelected={(value) => handleSetting("type", value)}
 				/>
 			</div>
