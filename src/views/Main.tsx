@@ -7,7 +7,7 @@ export default function Main(): React.ReactElement {
 	const [settings, setSettings] = useState<Settings>(() => defaultSetting);
 
 	return (
-		<section className='flex h-screen w-screen items-center justify-center bg-appBackground bg-cover dark:bg-appBackgroundDark'>
+		<section className='flex min-h-screen w-screen items-center justify-center bg-appBackground bg-cover dark:bg-appBackgroundDark'>
 			{!isStarted && (
 				<StartingPage
 					handleStarting={() => setIsStarted(true)}
